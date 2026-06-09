@@ -1,5 +1,5 @@
 server:
-  port: ${DEV_PORT}
+  port: ${DEV_PORT:8080}
 
 logging:
   pattern:

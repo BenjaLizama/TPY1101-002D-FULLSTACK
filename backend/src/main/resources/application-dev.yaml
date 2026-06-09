@@ -10,10 +10,6 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
-  security:
-    user:
-      name: admin
-      password: admin123
   jpa:
     show-sql: true
     properties:
