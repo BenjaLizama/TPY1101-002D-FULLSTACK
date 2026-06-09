@@ -1,5 +1,6 @@
 package com.taller.actividad.controller;
 
+import com.taller.actividad.dto.LoginRequest;
 import com.taller.actividad.dto.RegisterRequest;
 import com.taller.actividad.dto.UserDataResponse;
 import com.taller.actividad.service.UserService;
@@ -22,6 +23,11 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<UserDataResponse> agregarUsuario(@Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.crearUsuario(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserDataResponse> iniciarSesion(@Valid @RequestBody LoginRequest request) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.iniciarSesion(request));
     }
 
     @GetMapping("/")

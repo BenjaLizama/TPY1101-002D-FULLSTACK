@@ -1,5 +1,6 @@
 package com.taller.actividad.service;
 
+import com.taller.actividad.dto.LoginRequest;
 import com.taller.actividad.dto.RegisterRequest;
 import com.taller.actividad.dto.UserDataResponse;
 import com.taller.actividad.entity.UserEntity;
@@ -38,6 +39,12 @@ public class UserService {
         List<UserEntity> usuarios = userRepository.findAll();
 
         return usuarios.stream().map(this::mapToUserDataResponse).toList();
+    }
+
+    public UserDataResponse iniciarSesion(LoginRequest request) {
+        UserEntity usuarioEncontrado = userRepository.validateCredential(request.email(), request.password()).orElseThrow(() -> new RuntimeException("El correo o contraseña son incorrectos."));
+
+        return mapToUserDataResponse(usuarioEncontrado);
     }
 
     private UserDataResponse mapToUserDataResponse(UserEntity entity) {
