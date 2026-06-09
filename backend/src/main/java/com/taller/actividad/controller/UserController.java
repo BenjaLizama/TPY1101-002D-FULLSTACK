@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/usuarios")
@@ -20,5 +22,14 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<UserDataResponse> agregarUsuario(@Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.crearUsuario(request));
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<UserDataResponse>> listarUsuarios() {
+        List<UserDataResponse> data = userService.listarUsuarios();
+
+        if (data.isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).body(data);
+
+        return ResponseEntity.status(HttpStatus.OK).body(data);
     }
 }

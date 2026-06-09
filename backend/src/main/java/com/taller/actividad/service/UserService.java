@@ -7,6 +7,9 @@ import com.taller.actividad.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -29,6 +32,12 @@ public class UserService {
         userRepository.save(nuevoUsuario);
 
         return mapToUserDataResponse(nuevoUsuario);
+    }
+
+    public List<UserDataResponse> listarUsuarios() {
+        List<UserEntity> usuarios = userRepository.findAll();
+
+        return usuarios.stream().map(this::mapToUserDataResponse).toList();
     }
 
     private UserDataResponse mapToUserDataResponse(UserEntity entity) {
