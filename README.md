@@ -156,16 +156,19 @@ Al finalizar la evaluación deberán entregar:
 
 El proyecto desarrollado deberá incluir un README propio con:
 
-* Explicación técnica breve de la solución.
-* Instrucciones de instalación.
-* Dependencias utilizadas.
-* Puertos utilizados.
-* Ejecución del frontend.
-* Ejecución del backend.
-* Configuración de la base de datos.
-* Script de creación de tablas (si corresponde).
-* Credenciales de prueba.
-* Integrantes de la dupla.
+El sistema logra mostar un listado con los datos de los usuarios que son agregados desde el backend debido a que no contamos con un registro de usuario en el frontend.
 
+Se debe tener instalado node +20 | Java 21 | npm
+
+Backend: Spring Web | Spring Data JPA | Validation | Lombok | OpenApi | H2 Database | PostgreSQL Driver
+
+Se utiliza el puerto 8080 en el backend.
+
+Debes utilizar el comando npm run dev (antes debes haber instalado las dependencias usando npm install)
+
+Debes iniciar el backend desde intelij IDEA.
+
+Credenciales de prueba: | jdbc:h2:mem:testdb <- Se debe utilizar en http://localhost:8080/h2-console en el apartado de JDBC URL con username: sa y password vacia.
+  
 ```
 ```
